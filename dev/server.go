@@ -38,6 +38,7 @@ func keyAuth(conn ssh.ConnMetadata, key ssh.PublicKey) (*ssh.Permissions, error)
 func main() {
 	config := ssh.ServerConfig{
 		PublicKeyCallback: keyAuth,
+		NoClientAuth: true,
 	}
 	config.AddHostKey(hostPrivateKeySigner)
 
@@ -66,4 +67,3 @@ func main() {
 		sshConn.Close()
 	}
 }
-
